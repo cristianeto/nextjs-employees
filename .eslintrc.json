@@ -21,8 +21,8 @@
       "error",
       { "max": 1, "maxEOF": 1, "maxBOF": 1 }
     ],
-    "no-unused-vars": "error",
-    "import/extensions": ["error", "never"],
+    "no-unused-vars": "off",
+    "import/extensions": ["off"],
     "import/no-extraneous-dependencies": [
       "error",
       {
@@ -59,7 +59,9 @@
         "pathGroupsExcludedImportTypes": ["react"]
       }
     ],
+    "import/prefer-default-export": "off",
     "prettier/prettier": ["error"],
+    "react/react-in-jsx-scope": "off",
     "unused-imports/no-unused-imports": "error",
     "unused-imports/no-unused-vars": [
       "warn",

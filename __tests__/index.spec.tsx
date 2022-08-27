@@ -5,7 +5,7 @@ describe('Index Page', () => {
   it('should create index page', () => {
     render(<Home />);
 
-    const heading = screen.getByRole('heading', { name: /hello world/i });
+    const heading = screen.getByRole('heading', { name: /login/i });
 
     expect(heading).toBeInTheDocument();
   });

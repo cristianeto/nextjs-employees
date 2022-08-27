@@ -14,11 +14,12 @@ const customJestConfig = {
   moduleDirectories: ['node_modules', '<rootDir>/'],
   testEnvironment: 'jest-environment-jsdom',
   moduleNameMapper: {
-    '^@atoms/(.*)$': '<rootDir>/src/atoms/$1',
-    '^@hooks/(.*)$': '<rootDir>/src/hooks/$1',
-    '^@layouts/(.*)$': '<rootDir>/src/layouts/$1',
-    '^@molecules/(.*)$': '<rootDir>/src/molecules/$1',
-    '^@organisms/(.*)$': '<rootDir>/src/organisms/$1',
+    '^@atoms/(.*)$': '<rootDir>/src/components/atoms/$1',
+    '^@hooks': '<rootDir>/src/hooks/index.ts',
+    '^@interfaces': '<rootDir>/src/interfaces/index.ts',
+    '^@layouts/(.*)$': '<rootDir>/src/components/layouts/$1',
+    '^@molecules/(.*)$': '<rootDir>/src/components/molecules/$1',
+    '^@organisms/(.*)$': '<rootDir>/src/components/organisms/$1',
     '^@pages/(.*)$': '<rootDir>/src/pages/$1',
   },
 };
