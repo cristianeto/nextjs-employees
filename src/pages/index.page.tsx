@@ -24,14 +24,14 @@ const Home: NextPage = () => {
         <input
           type="email"
           name="email"
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleChange(e)}
+          onChange={handleChange}
           placeholder="email"
           value={email}
         />
         <input
           type="password"
           name="password"
-          onChange={(e) => handleChange(e)}
+          onChange={handleChange}
           placeholder="password"
           value={password}
         />
