@@ -3,7 +3,7 @@
     "jest": true
   },
   "extends": ["next/core-web-vitals", "airbnb-base", "prettier"],
-  "plugins": ["unused-imports", "prettier"],
+  "plugins": ["unused-imports", "prettier", "react-hooks"],
   "rules": {
     "arrow-body-style": "off",
     "comma-dangle": [
@@ -30,7 +30,9 @@
           "**/*.test.js",
           "**/*.spec.js",
           "**/*.test.tsx",
+          "**/*.test.ts",
           "**/*.spec.tsx",
+          "**/*.spec.ts",
           "**/*.setup.js"
         ]
       }
@@ -62,6 +64,8 @@
     "import/prefer-default-export": "off",
     "prettier/prettier": ["error"],
     "react/react-in-jsx-scope": "off",
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn", // Checks effect
     "unused-imports/no-unused-imports": "error",
     "unused-imports/no-unused-vars": [
       "warn",
