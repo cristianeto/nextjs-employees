@@ -1,6 +1,6 @@
 import React from 'react';
-import axios from 'axios';
 import type { NextPage } from 'next';
+import axios from 'axios';
 import Head from 'next/head';
 import { useForm } from '@hooks';
 import { ICredentials } from '@interfaces';
