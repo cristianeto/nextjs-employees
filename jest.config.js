@@ -18,6 +18,7 @@ const customJestConfig = {
     '^@hooks': '<rootDir>/src/hooks/index.ts',
     '^@interfaces': '<rootDir>/src/interfaces/index.ts',
     '^@layouts/(.*)$': '<rootDir>/src/components/layouts/$1',
+    '^@mocks': '<rootDir>/src/mocks/index.ts',
     '^@molecules/(.*)$': '<rootDir>/src/components/molecules/$1',
     '^@organisms/(.*)$': '<rootDir>/src/components/organisms/$1',
     '^@pages/(.*)$': '<rootDir>/src/pages/$1',

@@ -20,6 +20,7 @@
       "@hooks": ["src/hooks/index.ts"],
       "@interfaces": ["src/interfaces/index.ts"],
       "@layouts/*": ["src/components/layouts/*"],
+      "@mocks": ["src/mocks/index.ts"],
       "@molecules/*": ["src/components/molecules/*"],
       "@organisms/*": ["src/components/organisms/*"],
       "@pages/*": ["src/pages/*"]
