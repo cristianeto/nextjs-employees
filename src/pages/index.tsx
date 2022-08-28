@@ -2,6 +2,8 @@ import React from 'react';
 import type { NextPage } from 'next';
 import axios from 'axios';
 import Head from 'next/head';
+import { useRouter } from 'next/router';
+import { useSnackbar } from 'notistack';
 import { useForm } from '@hooks';
 import { ICredentials } from '@interfaces';
 
@@ -13,11 +15,19 @@ const initialValues: ICredentials = {
 const Home: NextPage = () => {
   const [formValues, handleChange] = useForm<ICredentials>(initialValues);
   const { email, password } = formValues;
+  const router = useRouter();
+  const { enqueueSnackbar } = useSnackbar();
 
   const handleSubmit = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    const { data } = await axios.post('/api/auth/login', { email, password });
-    console.log(data);
+    try {
+      const response = await axios.post('/api/auth/login', { email, password });
+      if (response.status === 200) {
+        router.push('/admin/dashboard');
+      }
+    } catch (error) {
+      enqueueSnackbar(`${error}`, { variant: 'error' });
+    }
   };
 
   return (
