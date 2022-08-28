@@ -16,13 +16,13 @@
     "incremental": true,
     "baseUrl": ".",
     "paths": {
-      "@atoms/*": ["src/components/atoms/*"],
+      "@atoms": ["src/components/atoms/index.ts"],
       "@hooks": ["src/hooks/index.ts"],
       "@interfaces": ["src/interfaces/index.ts"],
       "@layouts": ["src/components/layouts/index.ts"],
       "@mocks": ["src/mocks/index.ts"],
       "@molecules": ["src/components/molecules/index.ts"],
-      "@organisms/*": ["src/components/organisms/*"],
+      "@organisms": ["src/components/organisms/index.ts"],
       "@pages/*": ["src/pages/*"]
     }
   },
