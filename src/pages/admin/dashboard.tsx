@@ -21,7 +21,7 @@ const Dashboard: NextPage = () => {
       if (data === 'logout successfully') router.push('/login');
     } catch (error) {
       enqueueSnackbar(`${error}`, { variant: 'error' });
-      router.push('/');
+      router.push('/auth/login');
     }
   };
 
