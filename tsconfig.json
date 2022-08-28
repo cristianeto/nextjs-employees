@@ -19,9 +19,9 @@
       "@atoms/*": ["src/components/atoms/*"],
       "@hooks": ["src/hooks/index.ts"],
       "@interfaces": ["src/interfaces/index.ts"],
-      "@layouts/*": ["src/components/layouts/*"],
+      "@layouts": ["src/components/layouts/index.ts"],
       "@mocks": ["src/mocks/index.ts"],
-      "@molecules/*": ["src/components/molecules/*"],
+      "@molecules": ["src/components/molecules/index.ts"],
       "@organisms/*": ["src/components/organisms/*"],
       "@pages/*": ["src/pages/*"]
     }
