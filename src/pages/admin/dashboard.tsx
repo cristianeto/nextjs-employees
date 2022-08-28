@@ -18,7 +18,7 @@ const Dashboard: NextPage = () => {
   const logout = async () => {
     try {
       const { data } = await axios.post('/api/auth/logout');
-      if (data === 'logout successfully') router.push('/login');
+      if (data === 'logout successfully') router.push('/auth/login');
     } catch (error) {
       enqueueSnackbar(`${error}`, { variant: 'error' });
       router.push('/auth/login');
