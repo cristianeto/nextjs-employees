@@ -15,6 +15,11 @@ const Navbar: FC = () => {
             <a>Login</a>
           </Link>
         </li>
+        <li>
+          <Link href="/admin/employees">
+            <a>Employees</a>
+          </Link>
+        </li>
       </ul>
     </nav>
   );
