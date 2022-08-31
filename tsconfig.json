@@ -23,7 +23,8 @@
       "@mocks": ["src/mocks/index.ts"],
       "@molecules": ["src/components/molecules/index.ts"],
       "@organisms": ["src/components/organisms/index.ts"],
-      "@pages/*": ["src/pages/*"]
+      "@pages/*": ["src/pages/*"],
+      "@services": ["src/services/index.ts"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
