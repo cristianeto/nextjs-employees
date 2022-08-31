@@ -21,3 +21,9 @@ export interface IEmployeesPage {
 export interface IEmployeesContent {
   employees: IEmployee[];
 }
+
+export interface INavbar {
+  name: string;
+  path: string;
+  label: string;
+}
