@@ -12,6 +12,8 @@ export interface IUser {
 
 export interface IEmployeesTable {
   employees: IEmployee[];
+  onDelete: (params: string | number) => void;
+  onUpdate: (params: string | number) => void;
 }
 
 export interface IEmployeesPage {
