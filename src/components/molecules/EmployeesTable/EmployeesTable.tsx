@@ -37,11 +37,11 @@ const EmployeesTable: React.FC<IEmployeesTable> = ({
   return (
     <div style={{ height: 400, width: '100%' }}>
       <DataGrid
-        rows={rows}
+        checkboxSelection
         columns={columns}
         pageSize={5}
+        rows={rows}
         rowsPerPageOptions={[5]}
-        checkboxSelection
       />
     </div>
   );
