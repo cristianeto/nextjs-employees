@@ -11,9 +11,9 @@ const Navbar: FC = () => {
   const swithRoutes = useCallback(() => {
     if (router.pathname.includes('admin')) {
       setNavbarItems(adminItemsNavbar);
-      return;
+    } else {
+      setNavbarItems(publicItemsNavbar);
     }
-    setNavbarItems(publicItemsNavbar);
   }, [router.pathname]);
 
   useEffect(() => {

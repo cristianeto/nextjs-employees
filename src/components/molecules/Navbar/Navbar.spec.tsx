@@ -37,4 +37,17 @@ describe('<Navbar/>', () => {
 
     expect(element).toBeInTheDocument();
   });
+
+  it('should render Employees link', () => {
+    const { getByRole } = render(
+      <RouterContext.Provider
+        value={createMockRouter({ pathname: '/admin/employees' })}>
+        <Navbar />
+      </RouterContext.Provider>,
+    );
+
+    const element = getByRole('link', { name: /home/i });
+
+    expect(element).toBeInTheDocument();
+  });
 });
