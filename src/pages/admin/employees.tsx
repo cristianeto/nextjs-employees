@@ -1,9 +1,9 @@
 import { useEffect } from 'react';
 import { GetServerSideProps, NextPage } from 'next';
+import { loadingEmployees } from '@features/employee/employeeSlice';
 import { IEmployeesPage } from '@interfaces';
 import { EmployeesContent } from '@organisms';
 import { getEmployees } from '@services';
-import { loadingEmployees } from 'src/features/employee/employeeSlice';
 import { useAppDispatch } from 'src/redux/hooks';
 
 const EmployeesPage: NextPage<IEmployeesPage> = ({ employees }) => {

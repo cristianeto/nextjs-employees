@@ -7,7 +7,7 @@ const initialState: IEmployeeState = {
 };
 
 const employeeSlice = createSlice({
-  name: 'employees',
+  name: 'employee',
   initialState,
   reducers: {
     loadingEmployees: (state, action: PayloadAction<IEmployee[]>) => {
