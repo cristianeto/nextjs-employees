@@ -1,9 +1,9 @@
 import React from 'react';
 import type { NextPage } from 'next';
+import { useToast } from '@chakra-ui/react';
 import axios from 'axios';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
-import { useSnackbar } from 'notistack';
 import { useForm } from '@hooks';
 import { ICredentials } from '@interfaces';
 import { Navbar } from '@molecules';
@@ -17,7 +17,7 @@ const Login: NextPage = () => {
   const [formValues, handleChange] = useForm<ICredentials>(initialValues);
   const { email, password } = formValues;
   const router = useRouter();
-  const { enqueueSnackbar } = useSnackbar();
+  const toast = useToast();
 
   const handleSubmit = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
@@ -27,7 +27,12 @@ const Login: NextPage = () => {
         router.push('/admin/dashboard');
       }
     } catch (error) {
-      enqueueSnackbar(`${error}`, { variant: 'error' });
+      toast({
+        title: `${error}`,
+        status: 'error',
+        duration: 5000,
+        isClosable: true,
+      });
     }
   };
 

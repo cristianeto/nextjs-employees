@@ -1,15 +1,15 @@
 import { useState } from 'react';
 import { NextPage } from 'next';
+import { useToast } from '@chakra-ui/react';
 import axios from 'axios';
 import { useRouter } from 'next/router';
-import { useSnackbar } from 'notistack';
 import { IUser } from '@interfaces';
 import { Navbar } from '@molecules';
 
 const Dashboard: NextPage = () => {
   const [user, setUser] = useState<IUser>({ email: '', username: '' });
   const router = useRouter();
-  const { enqueueSnackbar } = useSnackbar();
+  const toast = useToast();
 
   const getProfile = async () => {
     const { data } = await axios.get('/api/profile');
@@ -21,7 +21,12 @@ const Dashboard: NextPage = () => {
       const { data } = await axios.post('/api/auth/logout');
       if (data === 'logout successfully') router.push('/auth/login');
     } catch (error) {
-      enqueueSnackbar(`${error}`, { variant: 'error' });
+      toast({
+        title: `${error}`,
+        status: 'error',
+        duration: 5000,
+        isClosable: true,
+      });
       router.push('/auth/login');
     }
   };

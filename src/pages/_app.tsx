@@ -1,12 +1,13 @@
 import '../../styles/globals.css';
+import { ChakraProvider } from '@chakra-ui/react';
 import type { AppProps } from 'next/app';
-import { SnackbarProvider } from 'notistack';
+import theme from 'styles/themeConfig';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <SnackbarProvider>
+    <ChakraProvider theme={theme}>
       <Component {...pageProps} />
-    </SnackbarProvider>
+    </ChakraProvider>
   );
 }
 
