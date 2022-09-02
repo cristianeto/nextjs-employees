@@ -16,6 +16,18 @@ export interface IEmployeesTable {
   onUpdate: (params: string | number) => void;
 }
 
+export interface IEmployeesList {
+  employees: IEmployee[];
+  onDelete: (params: string | number) => void;
+  onUpdate: (params: string | number) => void;
+}
+
+export interface IEmployeeItem {
+  employee: IEmployee;
+  onDelete: (params: string | number) => void;
+  onUpdate: (params: string | number) => void;
+}
+
 export interface IEmployeesPage {
   employees: IEmployee[];
 }
