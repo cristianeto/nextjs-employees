@@ -10,18 +10,6 @@ export interface IUser {
   username: string;
 }
 
-export interface IEmployeesTable {
-  employees: IEmployee[];
-  onDelete: (params: string | number) => void;
-  onUpdate: (params: string | number) => void;
-}
-
-export interface IEmployeesList {
-  employees: IEmployee[];
-  onDelete: (params: string | number) => void;
-  onUpdate: (params: string | number) => void;
-}
-
 export interface IEmployeeItem {
   employee: IEmployee;
   onDelete: (params: string | number) => void;
@@ -29,10 +17,6 @@ export interface IEmployeeItem {
 }
 
 export interface IEmployeesPage {
-  employees: IEmployee[];
-}
-
-export interface IEmployeesContent {
   employees: IEmployee[];
 }
 

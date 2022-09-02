@@ -1,13 +1,8 @@
 import * as React from 'react';
 import { TableContainer, Table, Thead, Tr, Th, Tfoot } from '@chakra-ui/react';
-import { IEmployeesTable } from '@interfaces';
 import { EmployeesList } from '@molecules';
 
-const EmployeesTable: React.FC<IEmployeesTable> = ({
-  employees,
-  onDelete,
-  onUpdate,
-}) => {
+const EmployeesTable: React.FC = () => {
   return (
     <TableContainer>
       <Table size="sm">
@@ -21,11 +16,7 @@ const EmployeesTable: React.FC<IEmployeesTable> = ({
           </Tr>
         </Thead>
 
-        <EmployeesList
-          employees={employees}
-          onDelete={onDelete}
-          onUpdate={onUpdate}
-        />
+        <EmployeesList />
 
         <Tfoot>
           <Tr>

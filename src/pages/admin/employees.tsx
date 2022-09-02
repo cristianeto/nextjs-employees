@@ -13,11 +13,7 @@ const EmployeesPage: NextPage<IEmployeesPage> = ({ employees }) => {
     dispatch(loadingEmployees(employees));
   }, [dispatch, employees]);
 
-  return (
-    <div>
-      <EmployeesContent employees={employees} />
-    </div>
-  );
+  return <EmployeesContent />;
 };
 
 export const getServerSideProps: GetServerSideProps = async () => {
