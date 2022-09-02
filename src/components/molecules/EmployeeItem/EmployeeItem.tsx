@@ -15,8 +15,14 @@ const EmployeeItem: React.FC<IEmployeeItem> = ({
       <Td>{employee.lastname}</Td>
       <Td>{employee.email}</Td>
       <Td>
-        <FaRegEdit onClick={() => onUpdate(employee.id)} />
-        <FaRegTrashAlt onClick={() => onDelete(employee.id)} />
+        <FaRegEdit
+          data-testid={`edit-icon-${employee.id}`}
+          onClick={() => onUpdate(employee.id)}
+        />
+        <FaRegTrashAlt
+          data-testid={`trash-icon-${employee.id}`}
+          onClick={() => onDelete(employee.id)}
+        />
       </Td>
     </Tr>
   );
