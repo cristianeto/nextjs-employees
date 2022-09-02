@@ -67,6 +67,15 @@
       }
     ],
     "import/prefer-default-export": "off",
+    //start redux-toolkit
+    "no-param-reassign": [
+      "error",
+      {
+        "props": true,
+        "ignorePropertyModificationsFor": ["state"]
+      }
+    ],
+    //end redux-toolkit
     "prettier/prettier": ["error"],
     "react/react-in-jsx-scope": "off",
     "react/jsx-sort-props": [

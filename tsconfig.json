@@ -18,6 +18,7 @@
     "paths": {
       "@atoms": ["src/components/atoms/index.ts"],
       "@constants": ["src/constants/index.ts"],
+      "@features/*": ["src/features/*"],
       "@hooks": ["src/hooks/index.ts"],
       "@interfaces": ["src/interfaces/index.ts"],
       "@layouts": ["src/components/layouts/index.ts"],
