@@ -6,5 +6,6 @@ export const publicItemsNavbar: INavbar[] = [
 ];
 
 export const adminItemsNavbar: INavbar[] = [
-  { name: 'home', path: '/admin/employees', label: 'Home' },
+  { name: 'dashboard', path: '/admin/dashboard', label: 'Home' },
+  { name: 'employees', path: '/admin/employees', label: 'Employees' },
 ];

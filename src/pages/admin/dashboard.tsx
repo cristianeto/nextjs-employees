@@ -4,6 +4,7 @@ import axios from 'axios';
 import { useRouter } from 'next/router';
 import { useSnackbar } from 'notistack';
 import { IUser } from '@interfaces';
+import { Navbar } from '@molecules';
 
 const Dashboard: NextPage = () => {
   const [user, setUser] = useState<IUser>({ email: '', username: '' });
@@ -27,6 +28,7 @@ const Dashboard: NextPage = () => {
 
   return (
     <div>
+      <Navbar />
       <h1>Dashboard</h1>
       <pre>{JSON.stringify(user, null, 2)}</pre>
       <button onClick={getProfile}>get profile</button>
