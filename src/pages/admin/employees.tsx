@@ -18,6 +18,7 @@ const EmployeesPage: NextPage<IEmployeesPage> = ({ employees }) => {
 
 export const getServerSideProps: GetServerSideProps = async () => {
   const { data } = await getEmployees();
+
   return {
     props: {
       employees: data,

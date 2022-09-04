@@ -10,8 +10,10 @@ export default function profileHandler(
   try {
     if (myTokenName) {
       const user = verify(myTokenName, `${process.env.NEXT_PUBLIC_SECRET_KEY}`);
+
       return res.status(200).json(user);
     }
+
     return res.status(401).json({ error: 'no token' });
   } catch (error) {
     return res.status(401).json({ error: 'Invalid token' });

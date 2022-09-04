@@ -67,6 +67,7 @@
       }
     ],
     "import/prefer-default-export": "off",
+    "newline-before-return": "error",
     //start redux-toolkit
     "no-param-reassign": [
       "error",
@@ -76,6 +77,7 @@
       }
     ],
     //end redux-toolkit
+    "prefer-destructuring": ["error", { "object": true, "array": false }],
     "prettier/prettier": ["error"],
     "react/react-in-jsx-scope": "off",
     "react/jsx-sort-props": [
