@@ -22,7 +22,7 @@ const Login: NextPage = () => {
   const handleSubmit = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     try {
-      const response = await axios.post('/api/auth/login', { email, password });
+      const response = await axios.post('/auth/login', { email, password });
       if (response.status === 200) {
         router.push('/admin/dashboard');
       }

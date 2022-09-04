@@ -1,4 +1,5 @@
 import React from 'react';
+import { Tr } from '@chakra-ui/react';
 import useSWR from 'swr';
 import { IEmployee } from '@interfaces';
 import { EmployeeItem } from '@molecules';
@@ -15,8 +16,8 @@ const EmployeesList: React.FC = () => {
     console.log('deleting employee with ID: ', idEmployee);
   };
 
-  if (error) return <div>Error to fetching employees!!!</div>;
-  if (!employees) return <div>loading...</div>;
+  if (error) return <Tr>Error to fetching employees!!!</Tr>;
+  if (!employees) return <Tr> loading...</Tr>;
 
   return (
     <>
