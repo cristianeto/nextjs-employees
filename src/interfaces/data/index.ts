@@ -4,7 +4,7 @@ export interface IEmployee {
   name: string;
   lastname: string;
   email: string;
-  password: string;
+  password?: string;
   birthdate?: string;
   address?: string;
   cellphone?: string;
