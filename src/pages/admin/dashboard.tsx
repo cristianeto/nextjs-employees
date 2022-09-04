@@ -12,13 +12,13 @@ const Dashboard: NextPage = () => {
   const toast = useToast();
 
   const getProfile = async () => {
-    const { data } = await axios.get('/api/profile');
+    const { data } = await axios.get('/profile');
     setUser({ email: data.email, username: data.username });
   };
 
   const logout = async () => {
     try {
-      const { data } = await axios.post('/api/auth/logout');
+      const { data } = await axios.post('/auth/logout');
       if (data === 'logout successfully') router.push('/auth/login');
     } catch (error) {
       toast({

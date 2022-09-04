@@ -1,11 +1,11 @@
 import React from 'react';
-import { Tbody } from '@chakra-ui/react';
+import useSWR from 'swr';
 import { IEmployee } from '@interfaces';
 import { EmployeeItem } from '@molecules';
-import { useAppSelector } from 'src/redux/hooks';
 
 const EmployeesList: React.FC = () => {
-  const { employees } = useAppSelector((state) => state.employees);
+  // const { employees } = useAppSelector((state) => state.employees);
+  const { data: employees, error } = useSWR<IEmployee[]>('/employees');
 
   const doUpdate = (idEmployee: string | number) => {
     console.log('updating employee with ID:', idEmployee);
@@ -15,8 +15,11 @@ const EmployeesList: React.FC = () => {
     console.log('deleting employee with ID: ', idEmployee);
   };
 
+  if (error) return <div>Error to fetching employees!!!</div>;
+  if (!employees) return <div>loading...</div>;
+
   return (
-    <Tbody>
+    <>
       {employees.map((employee: IEmployee) => (
         <EmployeeItem
           employee={employee}
@@ -25,7 +28,7 @@ const EmployeesList: React.FC = () => {
           onUpdate={doUpdate}
         />
       ))}
-    </Tbody>
+    </>
   );
 };
 

@@ -17,6 +17,7 @@ axios.interceptors.response.use(null, (error) => {
     // eslint-disable-next-line no-console
     // console.log(error);
   }
+
   return Promise.reject(error);
 });
 

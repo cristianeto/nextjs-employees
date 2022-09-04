@@ -13,6 +13,7 @@ export async function middleware(request: NextRequest) {
     /* const { payload } = await jwtVerify(jwtToken, secretKey);
     console.log({ payload }); */
     await jwtVerify(jwtToken, secretKey);
+
     return NextResponse.next();
   } catch (error) {
     return NextResponse.redirect(new URL('/auth/login', request.url));

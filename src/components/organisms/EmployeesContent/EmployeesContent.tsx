@@ -1,12 +1,16 @@
 import React from 'react';
-import { EmployeesTable, Navbar } from '@molecules';
+import { EmployeesList, Navbar, SimpleTable } from '@molecules';
 
 const EmployeesContent: React.FC = () => {
+  const headersTable = ['#', 'Name', 'Lastname', 'Email', 'Actions'];
+
   return (
     <>
       <Navbar />
       <h1>Employees Page</h1>
-      <EmployeesTable />
+      <SimpleTable headers={headersTable}>
+        <EmployeesList />
+      </SimpleTable>
     </>
   );
 };

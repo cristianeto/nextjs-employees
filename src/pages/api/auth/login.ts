@@ -25,7 +25,9 @@ export default function loginHandler(
       path: '/',
     });
     res.setHeader('Set-Cookie', serialized);
+
     return res.status(200).json('Login successful');
   }
+
   return res.status(401).json({ error: 'Invalid credentials' });
 }
