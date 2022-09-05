@@ -1,4 +1,4 @@
-import React from 'react';
+import { ReactElement } from 'react';
 import { IEmployee } from '../data';
 
 export interface IEmployeeState {
@@ -7,5 +7,5 @@ export interface IEmployeeState {
 }
 
 export interface IWrapperProvider {
-  children: React.ReactNode;
+  children: ReactElement;
 }
