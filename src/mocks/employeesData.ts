@@ -2,7 +2,7 @@ import { IEmployee } from '@interfaces';
 
 export const employee: IEmployee = {
   id: '1',
-  dni: '00000000001',
+  dni: '0000000001',
   name: 'John',
   lastname: 'John',
   email: 'john@example.com',
@@ -16,3 +16,30 @@ export const employee: IEmployee = {
   dose: 4,
   type: 'employee',
 };
+
+export const initialState: IEmployee = {
+  id: '',
+  dni: '',
+  name: '',
+  lastname: '',
+  email: '',
+};
+
+export const employeeForm = {
+  titles: {
+    create: 'new employee',
+    update: 'update',
+    updateRegister: 'update Employee',
+    deleteRegister: 'delete',
+    saveRegister: 'Save',
+  },
+  labels: {
+    dni: 'Dni',
+    name: 'Name',
+    lastname: 'Lastname',
+    email: 'Email',
+    type: 'Type',
+  },
+};
+
+export const headersTable = ['#', 'Name', 'Lastname', 'Email', 'Actions'];
