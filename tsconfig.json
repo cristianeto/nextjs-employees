@@ -27,7 +27,8 @@
       "@organisms": ["src/components/organisms/index.ts"],
       "@pages/*": ["src/pages/*"],
       "@screens": ["src/screens/index.ts"],
-      "@services": ["src/services/index.ts"]
+      "@services": ["src/services/index.ts"],
+      "@utils": ["src/utils/index.ts"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],

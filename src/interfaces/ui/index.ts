@@ -17,7 +17,9 @@ export interface IEmployeeItem {
   onUpdate: (params: string | number) => void;
 }
 export interface IEmployeesList {
-  employees: IEmployee[];
+  data: IEmployee[] | undefined;
+  onDelete: (params: string | number) => void;
+  onUpdate: (params: string | number) => void;
 }
 
 export interface IEmployeesPage {
@@ -37,6 +39,7 @@ export interface ISimpleTable {
 
 export interface IEmployeeForm {
   isOpen: boolean;
+  formType: string;
   onClose: () => void;
   onSubmit: (employee: IEmployee) => void;
 }
@@ -61,7 +64,8 @@ export interface ITextField {
 }
 
 export interface IForm {
-  defaultFormState: IEmployee;
+  initialState: IEmployee;
+  onClose: () => void;
   onSubmit: (employee: IEmployee) => void;
   labels: {
     dni: string;

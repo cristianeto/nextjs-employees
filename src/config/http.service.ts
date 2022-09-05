@@ -1,4 +1,3 @@
-import * as Sentry from '@sentry/nextjs';
 import axios from 'axios';
 
 axios.defaults.baseURL = `${process.env.NEXT_PUBLIC_API_URL}`;
@@ -13,9 +12,9 @@ axios.interceptors.response.use(null, (error) => {
     error.response.status >= 400 &&
     error.response.status < 500;
   if (!expectedError) {
-    Sentry.captureException(error);
+    // Sentry.captureException(error);
     // eslint-disable-next-line no-console
-    // console.log(error);
+    console.log(error);
   }
 
   return Promise.reject(error);

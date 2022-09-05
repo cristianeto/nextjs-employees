@@ -16,6 +16,7 @@ const customJestConfig = {
   moduleNameMapper: {
     '^@atoms': '<rootDir>/src/components/atoms/index.ts',
     '^@constants': '<rootDir>/src/constants/index.ts',
+    '^@features/(.*)$': '<rootDir>/src/features/$1',
     '^@hooks': '<rootDir>/src/hooks/index.ts',
     '^@interfaces': '<rootDir>/src/interfaces/index.ts',
     '^@layouts': '<rootDir>/src/components/layouts/index.ts',
@@ -23,6 +24,9 @@ const customJestConfig = {
     '^@molecules': '<rootDir>/src/components/molecules/index.ts',
     '^@organisms': '<rootDir>/src/components/organisms/index.ts',
     '^@pages/(.*)$': '<rootDir>/src/pages/$1',
+    '^@screens': '<rootDir>/src/screens/index.ts',
+    '^@services': '<rootDir>/src/services/index.ts',
+    '^@utils': '<rootDir>/src/utils/index.ts',
   },
 };
 
