@@ -4,12 +4,18 @@ import { headersTable } from '@constants';
 import { IEmployee } from '@interfaces';
 import { EmployeesList, Navbar, SimpleTable } from '@molecules';
 import { EmployeeForm } from '@organisms';
+import { saveEmployee } from '@services';
 
-const EmployeesContent: React.FC = () => {
+const EmployeesScreen: React.FC = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
-  const doSubmit = (employee: IEmployee) => {
-    console.log('Submiting...', employee);
+  const doSubmit = async (employee: IEmployee) => {
+    try {
+      const { data } = await saveEmployee(employee);
+      console.log(data);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -29,4 +35,4 @@ const EmployeesContent: React.FC = () => {
   );
 };
 
-export default EmployeesContent;
+export default EmployeesScreen;
