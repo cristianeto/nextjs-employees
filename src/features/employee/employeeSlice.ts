@@ -4,7 +4,7 @@ import { IEmployeeState, IEmployee } from '@interfaces';
 
 const initialState: IEmployeeState = {
   employees: [],
-  newEmployee: {
+  employee: {
     id: '',
     dni: '',
     name: '',
@@ -21,10 +21,10 @@ const employeeSlice = createSlice({
       state.employees = action.payload;
     },
     addEmployee: (state, action: PayloadAction<IEmployee>) => {
-      state.newEmployee = action.payload;
+      state.employee = action.payload;
     },
     resetEmployee: (state) => {
-      state.newEmployee = initialState.newEmployee;
+      state.employee = initialState.employee;
     },
   },
 });

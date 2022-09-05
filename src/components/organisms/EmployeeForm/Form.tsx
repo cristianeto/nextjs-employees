@@ -5,11 +5,12 @@ import employeeSchema from './employeeSchema';
 import { ButtonGroup } from './form.styles';
 import { TextField } from '@atoms';
 import { employeeForm } from '@constants';
-import { IEmployee, IForm } from '@interfaces';
+import { IForm } from '@interfaces';
 
 const Form: React.FC<IForm> = ({
-  defaultFormState: state,
-  onSubmit,
+  initialState: state,
+  onSubmit: submit,
+  onClose,
   labels,
 }) => {
   const { dni, name: firstname, lastname, email } = labels;
@@ -17,14 +18,10 @@ const Form: React.FC<IForm> = ({
     titles: { saveRegister },
   } = employeeForm;
 
-  const saveForm = (values: IEmployee) => {
-    onSubmit(values);
-  };
-
   const formik: any = useFormik({
     initialValues: state,
     onSubmit: (values) => {
-      saveForm(values);
+      submit(values);
     },
     validationSchema: employeeSchema,
   });
@@ -40,15 +37,26 @@ const Form: React.FC<IForm> = ({
 
   return (
     <form onSubmit={formik.handleSubmit}>
-      <TextField {...register('dni')} label={dni} placeholder="dni" />
-      <TextField {...register('name')} label={firstname} placeholder="name" />
-      <TextField {...register('lastname')} label={lastname} />
-      <TextField {...register('email')} label={email} type="email" />
+      <TextField {...register('dni')} label={dni} placeholder="DNI" />
+      <TextField {...register('name')} label={firstname} placeholder="Name" />
+      <TextField
+        {...register('lastname')}
+        label={lastname}
+        placeholder="Lastname"
+      />
+      <TextField
+        {...register('email')}
+        label={email}
+        placeholder="Email"
+        type="email"
+      />
       <ButtonGroup gap={4} width="100%">
         <Button colorScheme="blue" type="submit">
           {saveRegister}
         </Button>
-        <Button variant="outline">Cancel</Button>
+        <Button variant="outline" onClick={onClose}>
+          Cancel
+        </Button>
       </ButtonGroup>
     </form>
   );

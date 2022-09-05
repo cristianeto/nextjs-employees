@@ -7,24 +7,28 @@ import { useAppSelector } from 'src/redux/hooks';
 
 const EmployeeForm: React.FC<IEmployeeForm> = ({
   isOpen,
+  formType,
   onClose,
   onSubmit,
 }) => {
-  const { newEmployee } = useAppSelector((state) => state.employees);
-
+  const { employee: initialState } = useAppSelector((state) => state.employees);
   const { labels, titles } = formTexts;
+
   const formProps = {
-    defaultFormState: newEmployee,
+    initialState,
+    onClose,
     onSubmit,
     labels,
     titles,
   };
 
+  const { create, updateRegister, saveRegister } = titles;
+
   return (
     <Modal
       isOpen={isOpen}
-      mainButtonText="Save"
-      title="Create Employee"
+      mainButtonText={saveRegister}
+      title={formType === create ? create : updateRegister}
       onClose={onClose}>
       <Form {...formProps} />
     </Modal>
