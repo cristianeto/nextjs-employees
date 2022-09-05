@@ -17,7 +17,9 @@ export interface IEmployeeItem {
   onUpdate: (params: string | number) => void;
 }
 export interface IEmployeesList {
-  employees: IEmployee[];
+  data: IEmployee[] | undefined;
+  onDelete: (params: string | number) => void;
+  onUpdate: (params: string | number) => void;
 }
 
 export interface IEmployeesPage {
@@ -33,4 +35,49 @@ export interface INavbar {
 export interface ISimpleTable {
   headers: string[];
   children: React.ReactNode;
+}
+
+export interface IEmployeeForm {
+  isOpen: boolean;
+  formType: string;
+  onClose: () => void;
+  onSubmit: (employee: IEmployee) => void;
+}
+
+export interface IModal {
+  children: React.ReactNode;
+  title: string;
+  mainButtonText: string;
+  isOpen: boolean;
+  onClose: () => void;
+}
+
+export interface ITextField {
+  isError?: boolean;
+  helperText?: string;
+  label: string;
+  name: string;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  placeholder?: string;
+  value?: string;
+  type?: string;
+}
+
+export interface IForm {
+  initialState: IEmployee;
+  onClose: () => void;
+  onSubmit: (employee: IEmployee) => void;
+  labels: {
+    dni: string;
+    name: string;
+    lastname: string;
+    email: string;
+    type: string;
+  };
+}
+
+export interface IButton {
+  children: React.ReactNode;
+  colorScheme?: string;
+  variant?: 'ghost' | 'outline' | 'solid' | 'link' | 'unstyled';
 }

@@ -33,7 +33,8 @@
           "**/*.test.ts",
           "**/*.spec.tsx",
           "**/*.spec.ts",
-          "**/*.setup.js"
+          "**/*.setup.js",
+          "**/*-utils.tsx"
         ]
       }
     ],
