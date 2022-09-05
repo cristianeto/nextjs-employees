@@ -26,7 +26,7 @@ const customJestConfig = {
     '^@pages/(.*)$': '<rootDir>/src/pages/$1',
     '^@screens': '<rootDir>/src/screens/index.ts',
     '^@services': '<rootDir>/src/services/index.ts',
-    '^@utils': '<rootDir>/src/utils/index.ts',
+    '^@utils/(.*)$': '<rootDir>/src/utils/$1',
   },
 };
 

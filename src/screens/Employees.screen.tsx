@@ -7,7 +7,7 @@ import { IEmployee } from '@interfaces';
 import { EmployeesList, Navbar, SimpleTable } from '@molecules';
 import { EmployeeForm } from '@organisms';
 import { saveEmployee } from '@services';
-import { capitalizeFirstLetter } from '@utils';
+import { capitalizeFirstLetter } from 'src/utils/helpers';
 
 const EmployeesScreen: React.FC = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();

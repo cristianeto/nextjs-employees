@@ -8,7 +8,7 @@ import {
   ModalOverlay,
 } from '@chakra-ui/react';
 import { IModal } from '@interfaces';
-import { capitalizeFirstLetter } from '@utils';
+import { capitalizeFirstLetter } from 'src/utils/helpers';
 
 const Modal: React.FC<IModal> = ({ children, title, isOpen, onClose }) => {
   const initialRef = React.useRef(null);

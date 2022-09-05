@@ -10,12 +10,14 @@ type TypeProviders = {
 
 const store = makeStore();
 
-const AllTheProviders: FC<IWrapperProvider> = ({ children }) => {
+// The rest of provider must be here, For example: SessionProvider of next/auth
+const allProviders: FC<IWrapperProvider> = ({ children }) => {
   return <Provider store={store}>{children}</Provider>;
 };
+// using allProviders
 const renderWithStore = (ui: ReactElement, options = {}) =>
-  render(ui, { wrapper: AllTheProviders, ...options });
-
+  render(ui, { wrapper: allProviders, ...options });
+// normal render
 const Providers = ({ children }: TypeProviders) => children;
 const customRender = (ui: ReactElement, options = {}) =>
   render(ui, { wrapper: Providers, ...options });

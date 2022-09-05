@@ -1,4 +1,4 @@
-import { capitalizeFirstLetter } from '@utils';
+import { capitalizeFirstLetter } from './helpers';
 
 describe('utils', () => {
   it('should return capitalized the first letter of a string', () => {
