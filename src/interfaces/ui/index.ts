@@ -38,7 +38,7 @@ export interface ISimpleTable {
 export interface IEmployeeForm {
   isOpen: boolean;
   onClose: () => void;
-  onSubmit: () => void;
+  onSubmit: (employee: IEmployee) => void;
 }
 
 export interface IModal {
@@ -62,7 +62,7 @@ export interface ITextField {
 
 export interface IForm {
   defaultFormState: IEmployee;
-  onSubmitt: () => void;
+  onSubmit: (employee: IEmployee) => void;
   labels: {
     dni: string;
     name: string;
@@ -70,4 +70,10 @@ export interface IForm {
     email: string;
     type: string;
   };
+}
+
+export interface IButton {
+  children: React.ReactNode;
+  colorScheme?: string;
+  variant?: 'ghost' | 'outline' | 'solid' | 'link' | 'unstyled';
 }

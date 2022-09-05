@@ -1,14 +1,15 @@
 import React from 'react';
 import { Button, Heading, useDisclosure } from '@chakra-ui/react';
+import { headersTable } from '@constants';
+import { IEmployee } from '@interfaces';
 import { EmployeesList, Navbar, SimpleTable } from '@molecules';
 import { EmployeeForm } from '@organisms';
 
 const EmployeesContent: React.FC = () => {
-  const headersTable = ['#', 'Name', 'Lastname', 'Email', 'Actions'];
   const { isOpen, onOpen, onClose } = useDisclosure();
 
-  const doSubmit = () => {
-    console.log('Submiting...');
+  const doSubmit = (employee: IEmployee) => {
+    console.log('Submiting...', employee);
   };
 
   return (

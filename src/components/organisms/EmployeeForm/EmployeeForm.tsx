@@ -15,7 +15,7 @@ const EmployeeForm: React.FC<IEmployeeForm> = ({
   const { labels, titles } = formTexts;
   const formProps = {
     defaultFormState: newEmployee,
-    onSubmitt: onSubmit,
+    onSubmit,
     labels,
     titles,
   };

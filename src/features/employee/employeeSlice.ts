@@ -10,7 +10,6 @@ const initialState: IEmployeeState = {
     name: '',
     lastname: '',
     email: '',
-    type: 'employee',
   },
 };
 

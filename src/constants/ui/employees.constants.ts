@@ -4,7 +4,7 @@ export const employeeForm = {
     update: 'update',
     updateRegister: 'update Employee',
     deleteRegister: 'delete',
-    saveRegister: 'save',
+    saveRegister: 'Save',
   },
   labels: {
     dni: 'Dni',
@@ -14,3 +14,5 @@ export const employeeForm = {
     type: 'Type',
   },
 };
+
+export const headersTable = ['#', 'Name', 'Lastname', 'Email', 'Actions'];

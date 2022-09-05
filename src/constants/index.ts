@@ -1,2 +1,2 @@
 export * from './ui/navbar';
-export * from './ui/employeeForm';
+export * from './ui/employees.constants';
