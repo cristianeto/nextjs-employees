@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
 import { IEmployeeState, IEmployee } from '@interfaces';
 
-const initialState: IEmployeeState = {
+export const initialState: IEmployeeState = {
   employees: [],
   employee: {
     id: '',
@@ -21,7 +21,7 @@ const employeeSlice = createSlice({
       state.employees = action.payload;
     },
     addEmployee: (state, action: PayloadAction<IEmployee>) => {
-      state.employee = action.payload;
+      state.employees.push(action.payload);
     },
     resetEmployee: (state) => {
       state.employee = initialState.employee;
