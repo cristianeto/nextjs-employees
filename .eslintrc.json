@@ -34,7 +34,9 @@
           "**/*.spec.tsx",
           "**/*.spec.ts",
           "**/*.setup.js",
-          "**/*-utils.tsx"
+          "**/*-utils.tsx",
+          "**/*handlers.ts",
+          "**/*server.ts"
         ]
       }
     ],
