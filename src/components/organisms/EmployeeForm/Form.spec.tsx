@@ -16,7 +16,7 @@ describe('<Form/>', () => {
     expect(baseElement).toBeTruthy();
   });
 
-  it('should render save button', async () => {
+  it('should render save button', () => {
     const onSubmit = jest.fn();
     const { getByRole } = render(
       <Form

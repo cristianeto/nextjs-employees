@@ -1,8 +1,12 @@
 import { rest } from 'msw';
-import { employees } from './employeesData';
+import { employee, employees } from './employeesData';
+import { IEmployee } from '@interfaces';
 
+const apiURL = (path: string) => {
+  return `${process.env.NEXT_PUBLIC_API_URL}${path}`;
+};
 export const handlers = [
-  rest.post('/auth/login', (req, res, ctx) => {
+  rest.post(apiURL('/auth/login'), (req, res, ctx) => {
     return res(
       ctx.status(200),
       ctx.cookie('myTokenName', 'abc-123'),
@@ -10,7 +14,7 @@ export const handlers = [
     );
   }),
 
-  rest.get('/profile', (req, res, ctx) => {
+  rest.get(apiURL('/profile'), (req, res, ctx) => {
     // const { authToken } = req.cookies;
     // if (authToken) {
     return res(
@@ -23,7 +27,11 @@ export const handlers = [
     // }
   }),
 
-  rest.get('/employees', (req, res, ctx) => {
-    return res(ctx.status(200), ctx.json(employees));
+  rest.get(apiURL('/employees'), (req, res, ctx) => {
+    return res(ctx.status(200), ctx.json<IEmployee[]>(employees));
+  }),
+
+  rest.post(apiURL('/employees'), (req, res, ctx) => {
+    return res(ctx.status(201), ctx.json<IEmployee>(employee));
   }),
 ];
