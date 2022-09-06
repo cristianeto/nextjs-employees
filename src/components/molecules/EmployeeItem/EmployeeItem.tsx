@@ -8,7 +8,6 @@ const EmployeeItem: React.FC<IEmployeeItem> = ({
   employee,
   onDelete,
   onOpenModalForm,
-  onUpdate,
 }) => {
   const {
     titles: { update },

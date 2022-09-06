@@ -40,8 +40,9 @@ export interface ISimpleTable {
 }
 
 export interface IEmployeeForm {
-  isOpen: boolean;
   formType: string;
+  initialState: IEmployee;
+  isOpen: boolean;
   onClose: () => void;
   onSubmit: (employee: IEmployee) => void;
 }

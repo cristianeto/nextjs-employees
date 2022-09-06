@@ -7,20 +7,20 @@ import { IEmployee } from '@interfaces';
 import { EmployeesList, Navbar, SimpleTable } from '@molecules';
 import { EmployeeForm } from '@organisms';
 import { saveEmployee } from '@services';
-import { useAppDispatch } from 'src/redux/hooks';
+import { useAppSelector } from 'src/redux/hooks';
 import { capitalizeFirstLetter } from 'src/utils/helpers';
 
 const EmployeesScreen: React.FC = () => {
+  const { employee: emplo } = useAppSelector((state) => state.employees);
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { data: employees, error } = useSWR<IEmployee[]>('/employees');
   const { instance: toast } = useToast();
-  const dispatch = useAppDispatch();
 
   const {
-    titles: { create, updateRegister, update },
+    titles: { create, update },
   } = employeeForm;
   const [formType, setFormType] = useState(create);
-  const [selectedEmployeeId, setSelectedEmployeeId] = useState<string>('');
+  const [selectedEmployee, setSelectedEmployee] = useState<IEmployee>(emplo);
 
   const doSubmit = async (employee: IEmployee) => {
     try {
@@ -42,13 +42,22 @@ const EmployeesScreen: React.FC = () => {
     console.log('deleting employee with ID: ', idEmployee);
   };
 
-  const openModalForm = (type: string, employeeId: string = '') => {
-    if (type === update && employeeId !== '') {
-      setSelectedEmployeeId(employeeId);
+  const getEmployeeById = (employeeId: string) => {
+    return employees?.find((emp) => employeeId === emp.id);
+  };
+
+  const populateForm = (newType: string, emploId: string = '') => {
+    if (newType === update && emploId !== '') {
+      const foundEmployee = getEmployeeById(emploId);
+      if (foundEmployee) setSelectedEmployee(foundEmployee);
     } else {
-      setSelectedEmployeeId('');
+      setSelectedEmployee(emplo);
     }
-    setFormType(type);
+    setFormType(newType);
+  };
+
+  const openModalForm = (type: string, employeeId: string = '') => {
+    populateForm(type, employeeId);
     onOpen();
   };
 
@@ -64,6 +73,7 @@ const EmployeesScreen: React.FC = () => {
       <EmployeeForm
         data-testid="employee-form"
         formType={formType}
+        initialState={selectedEmployee}
         isOpen={isOpen}
         onClose={onClose}
         onSubmit={doSubmit}
