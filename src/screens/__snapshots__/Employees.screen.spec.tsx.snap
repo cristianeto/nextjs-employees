@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<EmployeesScreen/> should render the EmployeesScreen component 1`] = `
+<body>
+  <div>
+    <nav>
+      <ul>
+        <li>
+          <a
+            href="/"
+          >
+            Home
+          </a>
+        </li>
+        <li>
+          <a
+            href="/auth/login"
+          >
+            Login
+          </a>
+        </li>
+      </ul>
+    </nav>
+    <h1
+      class="chakra-heading css-0"
+    >
+      Employees Page
+    </h1>
+    <button
+      class="chakra-button css-0"
+      type="button"
+    >
+      New employee
+    </button>
+    <span>
+      loading...
+    </span>
+  </div>
+</body>
+`;

@@ -49,6 +49,7 @@ const EmployeesScreen: React.FC = () => {
         {capitalizeFirstLetter(create)}
       </Button>
       <EmployeeForm
+        data-testid="employee-form"
         formType={formType}
         isOpen={isOpen}
         onClose={onClose}
@@ -61,6 +62,7 @@ const EmployeesScreen: React.FC = () => {
         <SimpleTable headers={headersTable}>
           <EmployeesList
             data={employees}
+            data-testid="list-employee"
             onDelete={doDelete}
             onUpdate={doUpdate}
           />

@@ -1,0 +1,107 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Form/> should render the component 1`] = `
+<body>
+  <div>
+    <form>
+      <div
+        class="chakra-form-control css-0"
+        role="group"
+      >
+        <label
+          class="chakra-form__label css-0"
+          for="field-:r0:"
+          id="field-:r0:-label"
+        >
+          Dni
+        </label>
+        <input
+          class="chakra-input css-0"
+          id="field-:r0:"
+          name="dni"
+          placeholder="DNI"
+          type="text"
+          value=""
+        />
+      </div>
+      <div
+        class="chakra-form-control css-0"
+        role="group"
+      >
+        <label
+          class="chakra-form__label css-0"
+          for="field-:r1:"
+          id="field-:r1:-label"
+        >
+          Name
+        </label>
+        <input
+          class="chakra-input css-0"
+          id="field-:r1:"
+          name="name"
+          placeholder="Name"
+          type="text"
+          value=""
+        />
+      </div>
+      <div
+        class="chakra-form-control css-0"
+        role="group"
+      >
+        <label
+          class="chakra-form__label css-0"
+          for="field-:r2:"
+          id="field-:r2:-label"
+        >
+          Lastname
+        </label>
+        <input
+          class="chakra-input css-0"
+          id="field-:r2:"
+          name="lastname"
+          placeholder="Lastname"
+          type="text"
+          value=""
+        />
+      </div>
+      <div
+        class="chakra-form-control css-0"
+        role="group"
+      >
+        <label
+          class="chakra-form__label css-0"
+          for="field-:r3:"
+          id="field-:r3:-label"
+        >
+          Email
+        </label>
+        <input
+          class="chakra-input css-0"
+          id="field-:r3:"
+          name="email"
+          placeholder="Email"
+          type="email"
+          value=""
+        />
+      </div>
+      <div
+        class="chakra-button__group css-1yped2f"
+        role="group"
+      >
+        <button
+          class="chakra-button css-0"
+          type="submit"
+        >
+          Save
+        </button>
+        <button
+          class="chakra-button css-0"
+          type="button"
+        >
+          Cancel
+        </button>
+      </div>
+    </form>
+  </div>
+</body>
+`;
