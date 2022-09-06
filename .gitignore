@@ -56,3 +56,6 @@ dist
 /out-tsc
 # Sentry
 .sentryclirc
+
+#Eslint
+.eslintcache

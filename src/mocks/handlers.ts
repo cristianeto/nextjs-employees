@@ -34,4 +34,17 @@ export const handlers = [
   rest.post(apiURL('/employees'), (req, res, ctx) => {
     return res(ctx.status(201), ctx.json<IEmployee>(employee));
   }),
+
+  rest.put(apiURL('/employees/1'), (req, res, ctx) => {
+    return res(
+      ctx.status(201),
+      ctx.json<IEmployee>({
+        id: '1',
+        dni: '1111111111',
+        name: 'Chris',
+        lastname: 'Brown',
+        email: 'chris@example.com',
+      }),
+    );
+  }),
 ];

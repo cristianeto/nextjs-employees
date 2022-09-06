@@ -18,4 +18,16 @@ describe('Employees Service', () => {
     const { data } = await saveEmployee(newEmployee);
     expect(data).toEqual({ ...newEmployee, id: '1' });
   });
+
+  it('should update a employee by id', async () => {
+    const employeeToUpdate = {
+      id: '1',
+      dni: '1111111111',
+      name: 'Chris',
+      lastname: 'Brown',
+      email: 'chris@example.com',
+    };
+    const { data } = await saveEmployee(employeeToUpdate);
+    expect(data).toEqual(employeeToUpdate);
+  });
 });

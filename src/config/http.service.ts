@@ -4,6 +4,7 @@ axios.defaults.baseURL = `${process.env.NEXT_PUBLIC_API_URL}`;
 axios.defaults.timeout = 5000;
 axios.defaults.headers.common = {
   'Cache-control': 'no-cache',
+  'Content-Type': 'application/json',
 };
 
 axios.interceptors.response.use(null, (error) => {
