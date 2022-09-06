@@ -14,11 +14,13 @@ export interface IUser {
 export interface IEmployeeItem {
   employee: IEmployee;
   onDelete: (params: string | number) => void;
+  onOpenModalForm: (typeForm: string, employeeId: string) => void;
   onUpdate: (params: string | number) => void;
 }
 export interface IEmployeesList {
   data: IEmployee[] | undefined;
   onDelete: (params: string | number) => void;
+  onOpenModalForm: (typeForm: string, employeeId: string) => void;
   onUpdate: (params: string | number) => void;
 }
 

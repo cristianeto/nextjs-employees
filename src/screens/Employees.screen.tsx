@@ -7,17 +7,20 @@ import { IEmployee } from '@interfaces';
 import { EmployeesList, Navbar, SimpleTable } from '@molecules';
 import { EmployeeForm } from '@organisms';
 import { saveEmployee } from '@services';
+import { useAppDispatch } from 'src/redux/hooks';
 import { capitalizeFirstLetter } from 'src/utils/helpers';
 
 const EmployeesScreen: React.FC = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { data: employees, error } = useSWR<IEmployee[]>('/employees');
   const { instance: toast } = useToast();
+  const dispatch = useAppDispatch();
 
   const {
-    titles: { create, updateRegister },
+    titles: { create, updateRegister, update },
   } = employeeForm;
   const [formType, setFormType] = useState(create);
+  const [selectedEmployeeId, setSelectedEmployeeId] = useState<string>('');
 
   const doSubmit = async (employee: IEmployee) => {
     try {
@@ -31,12 +34,22 @@ const EmployeesScreen: React.FC = () => {
   };
 
   const doUpdate = (idEmployee: string | number) => {
-    setFormType(updateRegister);
+    setFormType(update);
     console.log('updating employee with ID:', idEmployee);
   };
 
   const doDelete = (idEmployee: string | number) => {
     console.log('deleting employee with ID: ', idEmployee);
+  };
+
+  const openModalForm = (type: string, employeeId: string = '') => {
+    if (type === update && employeeId !== '') {
+      setSelectedEmployeeId(employeeId);
+    } else {
+      setSelectedEmployeeId('');
+    }
+    setFormType(type);
+    onOpen();
   };
 
   return (
@@ -45,7 +58,7 @@ const EmployeesScreen: React.FC = () => {
       <Heading as="h1" size={'lg'}>
         Employees Page
       </Heading>
-      <Button variant="solid" onClick={onOpen}>
+      <Button variant="solid" onClick={() => openModalForm(create)}>
         {capitalizeFirstLetter(create)}
       </Button>
       <EmployeeForm
@@ -64,6 +77,7 @@ const EmployeesScreen: React.FC = () => {
             data={employees}
             data-testid="list-employee"
             onDelete={doDelete}
+            onOpenModalForm={openModalForm}
             onUpdate={doUpdate}
           />
         </SimpleTable>
