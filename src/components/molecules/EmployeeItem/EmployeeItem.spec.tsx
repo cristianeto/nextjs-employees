@@ -6,14 +6,14 @@ import { employee } from '@mocks';
 
 describe('<EmployeeItem />', () => {
   const onOpenModalForm = jest.fn();
-  const { baseElement, getByTestId } = render(
+  const onDelete = jest.fn();
+  const { baseElement, getByTestId, getByRole } = render(
     <Table>
       <Tbody>
         <EmployeeItem
           employee={employee}
-          onDelete={jest.fn()}
+          onDelete={onDelete}
           onOpenModalForm={onOpenModalForm}
-          onUpdate={jest.fn()}
         />
       </Tbody>
     </Table>,
@@ -21,6 +21,7 @@ describe('<EmployeeItem />', () => {
 
   beforeEach(() => {
     onOpenModalForm.mockClear();
+    onDelete.mockClear();
   });
   it('should render EmployeeItem correctly', () => {
     expect(baseElement).toBeTruthy();
@@ -30,27 +31,17 @@ describe('<EmployeeItem />', () => {
     waitFor(async () => {
       const editIcon = getByTestId('edit-icon-1');
       await userEvent.click(editIcon);
+      const titleModal = getByRole('banner', { name: /update employee/i });
       expect(onOpenModalForm).toHaveBeenCalled();
+      expect(titleModal).toBeInTheDocument();
     });
   });
 
-  it('should allow call delete function once', async () => {
-    const onClick = jest.fn();
-
-    render(
-      <Table>
-        <Tbody>
-          <EmployeeItem
-            employee={employee}
-            onDelete={onClick}
-            onOpenModalForm={onOpenModalForm}
-            onUpdate={onClick}
-          />
-        </Tbody>
-      </Table>,
-    );
-    const trashIcon = screen.getByTestId('trash-icon-1');
-    await userEvent.click(trashIcon);
-    expect(onClick).toHaveBeenCalled();
+  it('should allow call delete function once', () => {
+    waitFor(async () => {
+      const trashIcon = screen.getByTestId('trash-icon-1');
+      await userEvent.click(trashIcon);
+      expect(onDelete).toHaveBeenCalled();
+    });
   });
 });

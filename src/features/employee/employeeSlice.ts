@@ -23,13 +23,27 @@ const employeeSlice = createSlice({
     addEmployee: (state, action: PayloadAction<IEmployee>) => {
       state.employees.push(action.payload);
     },
+    setEmployee: (state, action: PayloadAction<IEmployee>) => {
+      state.employee = action.payload;
+    },
+    updateEmployee: (state, action: PayloadAction<IEmployee>) => {
+      const index = state.employees.findIndex(
+        (emp) => emp.id === action.payload.id,
+      );
+      state.employees[index] = action.payload;
+    },
     resetEmployee: (state) => {
       state.employee = initialState.employee;
     },
   },
 });
 
-export const { addEmployee, loadingEmployees, resetEmployee } =
-  employeeSlice.actions;
+export const {
+  addEmployee,
+  loadingEmployees,
+  resetEmployee,
+  setEmployee,
+  updateEmployee,
+} = employeeSlice.actions;
 
 export default employeeSlice.reducer;

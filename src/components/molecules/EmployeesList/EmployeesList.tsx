@@ -4,7 +4,6 @@ import { EmployeeItem } from '@molecules';
 
 const EmployeesList: React.FC<IEmployeesList> = ({
   data: employees,
-  onUpdate,
   onOpenModalForm,
   onDelete,
 }) => {
@@ -15,9 +14,8 @@ const EmployeesList: React.FC<IEmployeesList> = ({
           <EmployeeItem
             employee={employee}
             key={employee.id}
-            onDelete={onUpdate}
+            onDelete={onDelete}
             onOpenModalForm={onOpenModalForm}
-            onUpdate={onDelete}
           />
         ))}
     </>

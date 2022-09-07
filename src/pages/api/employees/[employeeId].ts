@@ -1,5 +1,4 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import { v4 as uuid } from 'uuid';
 import { IEmployee } from '@interfaces';
 import employees from 'src/data/employees.data';
 
@@ -11,24 +10,16 @@ export default function employeesHandler(
   req: NextApiRequest,
   res: NextApiResponse<IEmployee[] | IEmployee | IError>,
 ) {
-  if (req.method === 'GET') return res.status(200).json(employees);
-  if (req.method === 'POST') {
-    const { dni, name, lastname, email } = req.body;
-    const employee: IEmployee = {
-      id: uuid(),
-      dni,
-      name,
-      lastname,
-      email,
-      type: 'employee',
-    };
-    // ? TODO: connect to database for persisting data
-    employees.push(employee);
-    delete employee.password;
+  if (req.method === 'GET') {
+    const { employeeId } = req.query;
 
-    return res.status(201).json(employee);
+    const employee = employees.find((emp) => emp.id === employeeId);
+    if (employee) {
+      return res.status(200).json(employee);
+    }
+
+    return res.status(404).json({ error: 'Employee not found' });
   }
-
   if (req.method === 'PUT') {
     const { id, dni, name, lastname, email } = req.body;
 

@@ -2,40 +2,55 @@ import React, { useState } from 'react';
 import { Button, Heading, useDisclosure } from '@chakra-ui/react';
 import useSWR from 'swr';
 import { headersTable, employeeForm } from '@constants';
+import {
+  addEmployee,
+  resetEmployee,
+  setEmployee,
+  updateEmployee,
+} from '@features/employee/employeeSlice';
 import { useToast } from '@hooks';
 import { IEmployee } from '@interfaces';
 import { EmployeesList, Navbar, SimpleTable } from '@molecules';
 import { EmployeeForm } from '@organisms';
 import { saveEmployee } from '@services';
-import { useAppSelector } from 'src/redux/hooks';
+import { useAppSelector, useAppDispatch } from 'src/redux/hooks';
 import { capitalizeFirstLetter } from 'src/utils/helpers';
 
 const EmployeesScreen: React.FC = () => {
   const { employee: emplo } = useAppSelector((state) => state.employees);
+  const { data: employees, error, mutate } = useSWR<IEmployee[]>('/employees');
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const { data: employees, error } = useSWR<IEmployee[]>('/employees');
   const { instance: toast } = useToast();
-
+  const dispatch = useAppDispatch();
   const {
     titles: { create, update },
   } = employeeForm;
+
   const [formType, setFormType] = useState(create);
-  const [selectedEmployee, setSelectedEmployee] = useState<IEmployee>(emplo);
+
+  const doCreate = (employee: IEmployee) => {
+    dispatch(addEmployee(employee));
+  };
+
+  const doUpdate = (employee: IEmployee) => {
+    dispatch(updateEmployee(employee));
+  };
 
   const doSubmit = async (employee: IEmployee) => {
     try {
-      await saveEmployee(employee);
+      const { data: newEmployee } = await saveEmployee(employee);
+      if (!employee.id) {
+        doCreate(newEmployee);
+      } else {
+        doUpdate(employee);
+      }
       toast('Saved successfully');
     } catch (ex) {
       toast(String(ex), 'error');
     } finally {
       onClose();
+      dispatch(resetEmployee());
     }
-  };
-
-  const doUpdate = (idEmployee: string | number) => {
-    setFormType(update);
-    console.log('updating employee with ID:', idEmployee);
   };
 
   const doDelete = (idEmployee: string | number) => {
@@ -49,9 +64,7 @@ const EmployeesScreen: React.FC = () => {
   const populateForm = (newType: string, emploId: string = '') => {
     if (newType === update && emploId !== '') {
       const foundEmployee = getEmployeeById(emploId);
-      if (foundEmployee) setSelectedEmployee(foundEmployee);
-    } else {
-      setSelectedEmployee(emplo);
+      if (foundEmployee) dispatch(setEmployee(foundEmployee));
     }
     setFormType(newType);
   };
@@ -59,6 +72,10 @@ const EmployeesScreen: React.FC = () => {
   const openModalForm = (type: string, employeeId: string = '') => {
     populateForm(type, employeeId);
     onOpen();
+  };
+  const closeModalForm = () => {
+    dispatch(resetEmployee());
+    onClose();
   };
 
   return (
@@ -73,9 +90,9 @@ const EmployeesScreen: React.FC = () => {
       <EmployeeForm
         data-testid="employee-form"
         formType={formType}
-        initialState={selectedEmployee}
+        initialState={emplo}
         isOpen={isOpen}
-        onClose={onClose}
+        onClose={closeModalForm}
         onSubmit={doSubmit}
       />
       {error && <span>Error to fetching employees!!!</span>}
@@ -88,7 +105,6 @@ const EmployeesScreen: React.FC = () => {
             data-testid="list-employee"
             onDelete={doDelete}
             onOpenModalForm={openModalForm}
-            onUpdate={doUpdate}
           />
         </SimpleTable>
       )}
