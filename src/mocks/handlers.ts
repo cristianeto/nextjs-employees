@@ -28,10 +28,27 @@ export const handlers = [
   }),
 
   rest.get(apiURL('/employees'), (req, res, ctx) => {
-    return res(ctx.status(200), ctx.json<IEmployee[]>(employees));
+    return res(
+      ctx.status(200),
+      ctx.delay(100),
+      ctx.json<IEmployee[]>(employees),
+    );
   }),
 
   rest.post(apiURL('/employees'), (req, res, ctx) => {
     return res(ctx.status(201), ctx.json<IEmployee>(employee));
+  }),
+
+  rest.put(apiURL('/employees/:id'), (req, res, ctx) => {
+    return res(
+      ctx.status(200),
+      ctx.json<IEmployee>({
+        id: `${req.params.id}`,
+        dni: '1111111111',
+        name: 'Chris',
+        lastname: 'Brown',
+        email: 'chris@example.com',
+      }),
+    );
   }),
 ];

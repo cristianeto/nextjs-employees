@@ -3,15 +3,14 @@ import Form from './Form';
 import { employeeForm as formTexts } from '@constants';
 import { IEmployeeForm } from '@interfaces';
 import { Modal } from '@molecules';
-import { useAppSelector } from 'src/redux/hooks';
 
 const EmployeeForm: React.FC<IEmployeeForm> = ({
-  isOpen,
   formType,
+  initialState,
+  isOpen,
   onClose,
   onSubmit,
 }) => {
-  const { employee: initialState } = useAppSelector((state) => state.employees);
   const { labels, titles } = formTexts;
 
   const formProps = {

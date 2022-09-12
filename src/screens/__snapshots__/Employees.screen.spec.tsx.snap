@@ -1,0 +1,117 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<EmployeesScreen/> should render the EmployeesScreen component 1`] = `
+<body>
+  <div>
+    <nav>
+      <ul>
+        <li>
+          <a
+            href="/"
+          >
+            Home
+          </a>
+        </li>
+        <li>
+          <a
+            href="/auth/login"
+          >
+            Login
+          </a>
+        </li>
+      </ul>
+    </nav>
+    <h1
+      class="chakra-heading css-0"
+    >
+      Employees Page
+    </h1>
+    <button
+      class="chakra-button css-0"
+      type="button"
+    >
+      New employee
+    </button>
+    <div
+      class="chakra-table__container css-0"
+    >
+      <table
+        class="chakra-table css-0"
+        role="table"
+      >
+        <thead
+          class="css-0"
+        >
+          <tr
+            class="css-0"
+            role="row"
+          >
+            <th
+              class="css-0"
+            >
+              #
+            </th>
+            <th
+              class="css-0"
+            >
+              Name
+            </th>
+            <th
+              class="css-0"
+            >
+              Lastname
+            </th>
+            <th
+              class="css-0"
+            >
+              Email
+            </th>
+            <th
+              class="css-0"
+            >
+              Actions
+            </th>
+          </tr>
+        </thead>
+        <tbody
+          class="css-0"
+        />
+        <tfoot
+          class="css-0"
+        >
+          <tr
+            class="css-0"
+            role="row"
+          >
+            <th
+              class="css-0"
+            >
+              #
+            </th>
+            <th
+              class="css-0"
+            >
+              Name
+            </th>
+            <th
+              class="css-0"
+            >
+              Lastname
+            </th>
+            <th
+              class="css-0"
+            >
+              Email
+            </th>
+            <th
+              class="css-0"
+            >
+              Actions
+            </th>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+  </div>
+</body>
+`;

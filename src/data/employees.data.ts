@@ -3,7 +3,7 @@ import { IEmployee } from '@interfaces';
 const employees: IEmployee[] = [
   {
     id: '1',
-    dni: '00000000001',
+    dni: '0000000001',
     name: 'John',
     lastname: 'John',
     email: 'john@example.com',
@@ -19,7 +19,7 @@ const employees: IEmployee[] = [
   },
   {
     id: '2',
-    dni: '00000000002',
+    dni: '0000000002',
     name: 'Crist',
     lastname: 'Mac Courney',
     email: 'crist@example.com',
@@ -35,7 +35,7 @@ const employees: IEmployee[] = [
   },
   {
     id: '3',
-    dni: '00000000003',
+    dni: '0000000003',
     name: 'Fer',
     lastname: 'Gregory',
     email: 'fer@example.com',
@@ -51,7 +51,7 @@ const employees: IEmployee[] = [
   },
   {
     id: '4',
-    dni: '00000000004',
+    dni: '0000000004',
     name: 'Newton',
     lastname: 'Logan',
     email: 'newt@example.com',

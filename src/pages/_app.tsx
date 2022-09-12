@@ -11,7 +11,10 @@ function MyApp({ Component, pageProps }: AppProps) {
     <SWRConfig
       value={{
         fetcher,
-        refreshInterval: 3000, //
+        revalidateOnFocus: true,
+        // refreshInterval: 1000 * 60 * 60 * 60, // 1hour
+        refreshInterval: 1000,
+        provider: () => new Map(),
       }}>
       <Provider store={store}>
         <ChakraProvider theme={theme}>

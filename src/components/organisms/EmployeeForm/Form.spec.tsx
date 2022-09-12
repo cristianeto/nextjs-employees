@@ -1,85 +1,80 @@
+/* eslint-disable no-use-before-define */
 import { render, waitFor } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
+import user from '@testing-library/user-event';
 import Form from './Form';
 import { employeeForm, initialState, employee } from '@mocks';
 
 describe('<Form/>', () => {
+  const onSubmit = jest.fn();
+  const { baseElement, getByRole } = render(
+    <Form
+      initialState={initialState}
+      labels={employeeForm.labels}
+      onClose={jest.fn()}
+      onSubmit={onSubmit}
+    />,
+  );
+
+  beforeEach(() => {
+    onSubmit.mockClear();
+  });
+
   it('should render the component', () => {
-    const { baseElement } = render(
-      <Form
-        initialState={initialState}
-        labels={employeeForm.labels}
-        onClose={jest.fn()}
-        onSubmit={jest.fn()}
-      />,
-    );
+    expect(baseElement).toMatchSnapshot();
     expect(baseElement).toBeTruthy();
   });
 
   it('should render save button', () => {
-    const onSubmit = jest.fn();
-    const { getByRole } = render(
-      <Form
-        initialState={initialState}
-        labels={employeeForm.labels}
-        onClose={jest.fn()}
-        onSubmit={onSubmit}
-      />,
-    );
-    const button = getByRole('button', {
-      name: `${employeeForm.titles.saveRegister}`,
+    waitFor(() => {
+      expect(getSubmitButton()).toBeTruthy();
+      expect(getSubmitButton()).toBeInTheDocument();
     });
-    expect(button).toBeTruthy();
-    expect(button).toBeInTheDocument();
   });
 
-  it('should allow user type inputs', async () => {
-    const onSubmit = jest.fn();
-    const { getByRole } = render(
-      <Form
-        initialState={initialState}
-        labels={employeeForm.labels}
-        onClose={jest.fn()}
-        onSubmit={onSubmit}
-      />,
-    );
-    const dniInput = getByRole('textbox', { name: /dni/i });
-    const nameInput = getByRole('textbox', { name: 'Name' });
-    const lastnameInput = getByRole('textbox', { name: /lastname/i });
-    const emailInput = getByRole('textbox', { name: /email/i });
-    expect(dniInput).toBeTruthy();
-    await userEvent.type(dniInput, employee.dni);
-    await userEvent.type(nameInput, employee.name);
-    await userEvent.type(lastnameInput, employee.lastname);
-    await userEvent.type(emailInput, employee.email);
-    expect(dniInput).toHaveValue(employee.dni);
-    expect(nameInput).toHaveValue(employee.name);
-    expect(lastnameInput).toHaveValue(employee.lastname);
-    expect(emailInput).toHaveValue(employee.email);
+  it('should allow user type inputs', () => {
+    waitFor(async () => {
+      await user.type(getDNIInput(), employee.dni);
+      await user.type(getNameInput(), employee.name);
+      await user.type(getLastNameInput(), employee.lastname);
+      await user.type(getEmailInput(), employee.email);
+      expect(getDNIInput()).toHaveValue(employee.dni);
+      expect(getNameInput()).toHaveValue(employee.name);
+      expect(getLastNameInput()).toHaveValue(employee.lastname);
+      expect(getEmailInput()).toHaveValue(employee.email);
+    });
   });
 
-  it('should allow user submit the form', async () => {
-    const handleSubmit = jest.fn();
-    const { getByRole } = render(
-      <Form
-        initialState={initialState}
-        labels={employeeForm.labels}
-        onClose={jest.fn()}
-        onSubmit={handleSubmit}
-      />,
-    );
-    const user = userEvent.setup();
-    const dniInput = getByRole('textbox', { name: /dni/i });
-    const nameInput = getByRole('textbox', { name: 'Name' });
-    const lastnameInput = getByRole('textbox', { name: /lastname/i });
-    const emailInput = getByRole('textbox', { name: /email/i });
-    expect(dniInput).toBeTruthy();
-    await user.type(dniInput, employee.dni);
-    await user.type(nameInput, employee.name);
-    await user.type(lastnameInput, employee.lastname);
-    await user.type(emailInput, employee.email);
-    const submitButton = getByRole('button', { name: /save/i });
-    await user.click(submitButton);
-    await waitFor(() => expect(handleSubmit).toHaveBeenCalledTimes(1));
+  it('should allow user submit the form', () => {
+    waitFor(async () => {
+      await user.type(getDNIInput(), employee.dni);
+      await user.type(getNameInput(), employee.name);
+      await user.type(getLastNameInput(), employee.lastname);
+      await user.type(getEmailInput(), employee.email);
+      await user.click(getSubmitButton());
+      expect(onSubmit).toHaveBeenCalledTimes(1);
+      expect(onSubmit).toHaveBeenCalledWith({ ...employee, id: '' });
+    });
   });
+
+  function getDNIInput() {
+    return getByRole('textbox', { name: /dni/i });
+  }
+
+  function getNameInput() {
+    return getByRole('textbox', { name: /name/i });
+  }
+
+  function getLastNameInput() {
+    return getByRole('textbox', { name: /lastname/i });
+  }
+
+  function getEmailInput() {
+    return getByRole('textbox', { name: /email/i });
+  }
+
+  function getSubmitButton() {
+    return getByRole('button', {
+      name: /save/i,
+    });
+  }
 });

@@ -14,12 +14,12 @@ export interface IUser {
 export interface IEmployeeItem {
   employee: IEmployee;
   onDelete: (params: string | number) => void;
-  onUpdate: (params: string | number) => void;
+  onOpenModalForm: (typeForm: string, employeeId: string) => void;
 }
 export interface IEmployeesList {
   data: IEmployee[] | undefined;
   onDelete: (params: string | number) => void;
-  onUpdate: (params: string | number) => void;
+  onOpenModalForm: (typeForm: string, employeeId: string) => void;
 }
 
 export interface IEmployeesPage {
@@ -38,8 +38,9 @@ export interface ISimpleTable {
 }
 
 export interface IEmployeeForm {
-  isOpen: boolean;
   formType: string;
+  initialState: IEmployee;
+  isOpen: boolean;
   onClose: () => void;
   onSubmit: (employee: IEmployee) => void;
 }

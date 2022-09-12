@@ -1,6 +1,7 @@
 import React, { FC, ReactElement } from 'react';
 import { render } from '@testing-library/react';
 import { Provider } from 'react-redux';
+import { SWRConfig } from 'swr';
 import { makeStore } from '../redux/store';
 import { IWrapperProvider } from '@interfaces';
 
@@ -8,7 +9,11 @@ const store = makeStore();
 
 // The rest of provider must be here, For example: SessionProvider of next/auth
 const allProviders: FC<IWrapperProvider> = ({ children }) => {
-  return <Provider store={store}>{children}</Provider>;
+  return (
+    <SWRConfig value={{ dedupingInterval: 0 }}>
+      <Provider store={store}>{children}</Provider>
+    </SWRConfig>
+  );
 };
 // using allProviders
 const renderWithStore = (ui: ReactElement, options = {}) =>
