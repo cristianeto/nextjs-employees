@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
 import { Button, Heading, useDisclosure } from '@chakra-ui/react';
-import useSWR from 'swr';
 import { headersTable, employeeForm } from '@constants';
 import {
   addEmployee,
-  resetEmployee,
   setEmployee,
+  resetEmployee,
   updateEmployee,
 } from '@features/employee/employeeSlice';
 import { useToast } from '@hooks';
@@ -17,8 +16,10 @@ import { useAppSelector, useAppDispatch } from 'src/redux/hooks';
 import { capitalizeFirstLetter } from 'src/utils/helpers';
 
 const EmployeesScreen: React.FC = () => {
-  const { employee: emplo } = useAppSelector((state) => state.employees);
-  const { data: employees, error, mutate } = useSWR<IEmployee[]>('/employees');
+  const { employee: emplo, employees } = useAppSelector(
+    (state) => state.employees,
+  );
+  // const { data: employees, error } = useSWR<IEmployee[]>('/employees');
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { instance: toast } = useToast();
   const dispatch = useAppDispatch();
@@ -58,7 +59,7 @@ const EmployeesScreen: React.FC = () => {
   };
 
   const getEmployeeById = (employeeId: string) => {
-    return employees?.find((emp) => employeeId === emp.id);
+    return employees?.find((emp: IEmployee) => employeeId === emp.id);
   };
 
   const populateForm = (newType: string, emploId: string = '') => {
@@ -77,6 +78,8 @@ const EmployeesScreen: React.FC = () => {
     dispatch(resetEmployee());
     onClose();
   };
+  // if (error) return <div>Error to fetching employees!!!</div>;
+  if (!employees) return <div>loading...</div>;
 
   return (
     <>
@@ -95,19 +98,15 @@ const EmployeesScreen: React.FC = () => {
         onClose={closeModalForm}
         onSubmit={doSubmit}
       />
-      {error && <span>Error to fetching employees!!!</span>}
-      {!error && !employees ? (
-        <span>loading...</span>
-      ) : (
-        <SimpleTable headers={headersTable}>
-          <EmployeesList
-            data={employees}
-            data-testid="list-employee"
-            onDelete={doDelete}
-            onOpenModalForm={openModalForm}
-          />
-        </SimpleTable>
-      )}
+
+      <SimpleTable headers={headersTable}>
+        <EmployeesList
+          data={employees}
+          data-testid="list-employee"
+          onDelete={doDelete}
+          onOpenModalForm={openModalForm}
+        />
+      </SimpleTable>
     </>
   );
 };

@@ -9,8 +9,8 @@ const EmployeesList: React.FC<IEmployeesList> = ({
 }) => {
   return (
     <>
-      {employees !== undefined &&
-        employees.map((employee: IEmployee) => (
+      {employees &&
+        employees?.map((employee: IEmployee) => (
           <EmployeeItem
             employee={employee}
             key={employee.id}
